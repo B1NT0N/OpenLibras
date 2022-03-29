@@ -27,6 +27,10 @@ while True:
     #get results from mediapipe and drawing it on the image
     if results.multi_hand_landmarks:
         for hand_landmarks in results.multi_hand_landmarks:
+            for id, lm in enumerate(hand_landmarks.landmark):
+                h, w, c = img.shape
+                cx,cy = int(lm.x*w), int(lm.y*h)
+                
             mpDraw.draw_landmarks(img, hand_landmarks,mpHands.HAND_CONNECTIONS)
     
     #calculate FPS
