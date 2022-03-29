@@ -1,7 +1,6 @@
 #import Packages
 import cv2
 import mediapipe as mp
-import time
 
 #capture video on camera 0
 cap = cv2.VideoCapture(0)
