@@ -1,4 +1,6 @@
-# Data Processing  Module
+# Data Processing Module
+
+#import Packages
 import cv2
 from HTM import hand_detector
 import numpy as np

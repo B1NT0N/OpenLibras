@@ -1,4 +1,6 @@
 # Data Gathering Module
+
+#import Packages
 import cv2
 from HTM import hand_detector
 import numpy as np
@@ -70,6 +72,6 @@ while True:
     if key == ord("s"):
         counter += 1
         cv2.imwrite(f"{path}/{character}_{counter:0004}.jpg", img_background)
-        print(f"\r{counter}", end="\r")
+        print(f"\rImages Saved: {counter}", end="\r")
     if key == ord("q"):
         exit()
