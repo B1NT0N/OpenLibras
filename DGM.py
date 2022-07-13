@@ -3,13 +3,30 @@ import cv2
 from HTM import hand_detector
 import numpy as np
 import math
+import os
 
 img_size = 300
 
 detector = hand_detector(MIN_DETECTION_CONFIDENCE=0.8,MAX_NUM_HANDS=1)
 cap = cv2.VideoCapture(0)
 
-path = "Data/C"
+
+
+character = input("Character: ")
+
+path = os.getcwd()
+try:
+    os.mkdir(f"{path}\\Characters")
+except FileExistsError:
+    pass
+path = os.path.join(f"{path}\\Characters", f"{character}")
+
+try:
+    os.mkdir(path)
+except FileExistsError:
+    pass
+os.chdir(path)
+
 counter = 0
 
 while True:
@@ -23,7 +40,6 @@ while True:
 
             height, width, _ = img_croped.shape
             
-             
             aspect_ratio = height/width
             if aspect_ratio >1:
                 const = img_size/height
@@ -53,7 +69,7 @@ while True:
     key = cv2.waitKey(1)
     if key == ord("s"):
         counter += 1
-        cv2.imwrite(f"{path}/C_{counter:003}.jpg", img_background)
-        print(counter)
+        cv2.imwrite(f"{path}/{character}_{counter:0004}.jpg", img_background)
+        print(f"\r{counter}", end="\r")
     if key == ord("q"):
         exit()
